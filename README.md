@@ -14,12 +14,14 @@ sides, as in the Studio chart.
 
 ## Publishing on GitHub Pages
 
-1. Put these files at the root of the repository, or in `docs/`.
-2. In the repository's **Settings → Pages**, choose **Deploy from a branch**, pick the branch and the folder (`/` or `/docs`).
-3. The page appears at `https://<user>.github.io/<repo>/` after a minute or two.
+This folder is the repository `sand7888/project-mercury` (branch `main`, files at the root).
 
-For a link preview with the image, set `PAGE_URL` in `../build_pages.py` to that address (ending in `/`), run
-`python build_pages.py` again and commit the new `index.html`.
+1. Create the public repository `project-mercury` on GitHub, empty (no README or licence), and push `main` to it.
+2. In the repository's **Settings → Pages**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`.
+3. The page appears at https://sand7888.github.io/project-mercury/ after a minute or two.
+
+The link preview image already points at that address (`PAGE_URL` in `../build_pages.py`). If the repository gets
+another name, change `PAGE_URL`, rebuild and commit.
 
 ## Rebuilding
 
