@@ -4437,8 +4437,12 @@ global.FL = { mount, templates: TEMPLATES, themes: THEMES, palettes: PALETTES, p
   });
   function forWidth() {
     var narrow = host.getBoundingClientRect().width < 640;
-    // narrow: a slimmer time-in-flight band beside the line leaves the cards more of the width
-    var extra = narrow ? { tlEdits: narrowEdits, bandHeight: 100 } : { tlEdits: wide };
+    // narrow: a slimmer time-in-flight band beside the line leaves the cards more of the width, and the timeline
+    // length comes from the cards (Spacing: fit) instead of a fixed scale, so busy stretches grow and each card
+    // stays beside its dot; years are not to scale there. The hand-placed axis names are dropped too: the chart
+    // always shows a moved name, even under a card, while untouched names that would sit under one are left out
+    var extra = narrow ? { tlEdits: narrowEdits, tlAxis: {}, bandHeight: 100, tlWidth: 0, spacing: "fit" }
+      : { tlEdits: wide, tlAxis: project.settings.tlAxis };
     return { narrow: narrow, project: Object.assign({}, project, { settings: Object.assign({}, project.settings, extra) }) };
   }
   var cur = forWidth(), inst = FL.mount(host, cur.project, {});
